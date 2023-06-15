@@ -29,9 +29,10 @@ export const UserForm = () => {
           <input
             className="form-control"
             placeholder="Nombre de usuario"
+            name="username"
             value={username}
-            onChange={ onInputChange }
-          />
+            onChange={onInputChange} />
+          
         </div>
 
         <div className="mb-3">
@@ -41,6 +42,7 @@ export const UserForm = () => {
           <input
             className="form-control"
             placeholder="email"
+            name="email"
             value={email}
             onChange={ onInputChange }
           />
@@ -56,6 +58,7 @@ export const UserForm = () => {
           <input
             type="password"
             className="form-control"
+            name="password"
             value={password}
             onChange={ onInputChange }
           />
@@ -65,5 +68,6 @@ export const UserForm = () => {
           Submit
         </button>
       </form>
+   
   );
 }
