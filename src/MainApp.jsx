@@ -2,23 +2,30 @@ import React from 'react'
 import { UserForm } from './assets/components/UserForm'
 import { UsersList } from './assets/components/UsersList'
 
+const defaultUsers = [
+  {
+    id:1,
+    username: 'Amnhed',
+    password: '12345',
+    email: 'amnhedl@gmail.com'
+  },
+  {
+    id: 2,
+    username: 'Jimeno',
+    password: '12345',
+    email: 'jimenol@gmail.com'
+  },
+
+]
+
 export const MainApp = () => {
+  
 
-  const defaultUsers = [
-    {
-      id:1,
-      username: 'Amnhed',
-      password: '12345',
-      email: 'amnhedl@gmail.com'
-    },
-    {
-      id: 2,
-      username: 'Jimeno',
-      password: '12345',
-      email: 'jimenol@gmail.com'
-    },
-
-  ]
+  const handlerAddUser = (user) => {
+    console.log(' add user');
+    console.log(user);
+    
+  }
 
   // console.log(defaultUsers);
   return (
@@ -26,11 +33,15 @@ export const MainApp = () => {
         <h2>MainApp</h2>
         <div className="row">
           <div className="col">
-            <UserForm />
+            <UserForm 
+              handlerAddUser = { handlerAddUser }
+            />
           </div>
 
           <div className="col">
-            <UsersList users= { defaultUsers }/>
+            <UsersList 
+              users = { defaultUsers }
+            />
           </div>
         </div>
     </div>
