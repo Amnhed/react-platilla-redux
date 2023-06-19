@@ -1,9 +1,9 @@
 import { useState } from "react"
 
 const initialUserForm = {
-    username: 'aaa',
-    password:'asas',
-    email:'asas'
+    username: '',
+    password:'',
+    email:''
 }
 
 export const UserForm = () => {
@@ -20,8 +20,19 @@ export const UserForm = () => {
             [name]: value,
         });
     }
+    const onSubmit = (event) => {
+      event.preventDefault();
+      console.log( userForm );
+      //guardar el usario en el lisatdo de usuarios
+      if( !username || !email || !password){
+        alert('Debes completar los campos del formulario');
+        return
+      }
+
+      setUserForm(initialUserForm);
+    }
   return (
-      <form>
+      <form onSubmit={ onSubmit } >
       <div className="mb-3">
           <label htmlFor="username" className="form-label">
             Nombre de usuario
