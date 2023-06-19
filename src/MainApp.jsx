@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import { UserForm } from './assets/components/UserForm'
 import { UsersList } from './assets/components/UsersList'
+import { usersReducer } from './assets/components/reducers/usersReducer'
 
 const defaultUsers = [
   {
@@ -20,11 +21,13 @@ const defaultUsers = [
 
 export const MainApp = () => {
   
-
-  const handlerAddUser = (user) => {
-    console.log(' add user');
-    console.log(user);
-    
+const [ users, dispatch ] = useReducer(usersReducer, defaultUsers);
+  
+const handlerAddUser = (user) => {
+    dispatch({
+      type:'addUser',
+      payload: user,
+    });
   }
 
   // console.log(defaultUsers);
@@ -40,7 +43,7 @@ export const MainApp = () => {
 
           <div className="col">
             <UsersList 
-              users = { defaultUsers }
+              users = { users }
             />
           </div>
         </div>
