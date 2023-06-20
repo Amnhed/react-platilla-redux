@@ -19,6 +19,12 @@ const defaultUsers = [
 
 ]
 
+const initialUserForm = {
+  username: '',
+  password:'',
+  email:''
+}
+
 export const MainApp = () => {
   
   const [ users, dispatch ] = useReducer(usersReducer, defaultUsers);
@@ -45,15 +51,21 @@ export const MainApp = () => {
         <div className="row">
           <div className="col">
             <UserForm 
+              initialUserForm = { initialUserForm }
               handlerAddUser = { handlerAddUser }
             />
           </div>
 
           <div className="col">
-            <UsersList 
-              handlerRemoveUser= { handlerRemoveUser }
-              users = { users }
-            />
+            {
+              users.length === 0 
+                ? <div className="alert alert-warning">No existen usarios en el sistema</div>
+                : <UsersList 
+                  handlerRemoveUser= { handlerRemoveUser }
+                  users = { users }
+              />
+            }
+
           </div>
         </div>
     </div>
