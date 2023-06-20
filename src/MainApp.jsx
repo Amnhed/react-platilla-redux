@@ -21,14 +21,22 @@ const defaultUsers = [
 
 export const MainApp = () => {
   
-const [ users, dispatch ] = useReducer(usersReducer, defaultUsers);
+  const [ users, dispatch ] = useReducer(usersReducer, defaultUsers);
   
-const handlerAddUser = (user) => {
+  const handlerAddUser = (user) => {
     dispatch({
       type:'addUser',
       payload: user,
     });
   }
+
+  const handlerRemoveUser = (id) => {
+    dispatch({
+      type:'removeUser',
+      payload: id,
+    });
+  }
+
 
   // console.log(defaultUsers);
   return (
@@ -43,6 +51,7 @@ const handlerAddUser = (user) => {
 
           <div className="col">
             <UsersList 
+              handlerRemoveUser= { handlerRemoveUser }
               users = { users }
             />
           </div>
