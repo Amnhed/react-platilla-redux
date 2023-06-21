@@ -1,9 +1,6 @@
 import React from 'react'
 
-export const UserRow = ( { handlerRemoveUser, id, username, email } ) => {
-  const onRemoveUser = (id) => {
-    handlerRemoveUser(id)
-  }
+export const UserRow = ( { handlerUserSelectedForm, handlerRemoveUser, id, username, email, password } ) => {
 
   return (
       <tr>
@@ -12,7 +9,16 @@ export const UserRow = ( { handlerRemoveUser, id, username, email } ) => {
         <td>{ username }</td>
         <td>{ email }</td>
         <td>
-          <button type="button" className="btn btn-secondary sm">
+          <button 
+            type="button" 
+            className="btn btn-secondary sm"
+            onClick={ () => handlerUserSelectedForm({
+              id,
+              username,
+              email,
+              password
+            }) }
+          >
             Actualizar
           </button>
         </td>
@@ -20,7 +26,7 @@ export const UserRow = ( { handlerRemoveUser, id, username, email } ) => {
           <button 
             type="button" 
             className="btn btn-danger sm"
-            onClick={ () => onRemoveUser(id) }
+            onClick={ () => handlerRemoveUser(id) }
           >
             Eliminar
           </button>

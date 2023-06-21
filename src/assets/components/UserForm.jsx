@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { useState } from "react"
 
-export const UserForm = ( { handlerAddUser, initialUserForm } ) => {
+export const UserForm = ( { userSelected, handlerAddUser, initialUserForm } ) => {
 
     const [userForm, setUserForm] = useState(initialUserForm);
 
@@ -26,6 +27,14 @@ export const UserForm = ( { handlerAddUser, initialUserForm } ) => {
 
       setUserForm(initialUserForm);
     }
+
+    useEffect(() => {
+      //console.log(userSelected);
+      setUserForm({
+        ...userSelected,
+      })
+    }, [userSelected]);
+
   return (
       <form onSubmit={ onSubmit } >
       <div className="mb-3">

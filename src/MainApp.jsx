@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState } from 'react'
 import { UserForm } from './assets/components/UserForm'
 import { UsersList } from './assets/components/UsersList'
 import { usersReducer } from './assets/components/reducers/usersReducer'
@@ -20,6 +20,7 @@ const defaultUsers = [
 ]
 
 const initialUserForm = {
+  id:0,
   username: '',
   password:'',
   email:''
@@ -28,6 +29,7 @@ const initialUserForm = {
 export const MainApp = () => {
   
   const [ users, dispatch ] = useReducer(usersReducer, defaultUsers);
+  const [ userSelected, setUserSelected ] = useState(initialUserForm);
   
   const handlerAddUser = (user) => {
     dispatch({
@@ -43,6 +45,11 @@ export const MainApp = () => {
     });
   }
 
+  const handlerUserSelectedForm = (user) => {
+    //console.log(user);
+    setUserSelected({...user});
+  }
+
 
   // console.log(defaultUsers);
   return (
@@ -53,6 +60,7 @@ export const MainApp = () => {
             <UserForm 
               initialUserForm = { initialUserForm }
               handlerAddUser = { handlerAddUser }
+              userSelected = { userSelected }
             />
           </div>
 
@@ -61,9 +69,10 @@ export const MainApp = () => {
               users.length === 0 
                 ? <div className="alert alert-warning">No existen usarios en el sistema</div>
                 : <UsersList 
-                  handlerRemoveUser= { handlerRemoveUser }
-                  users = { users }
-              />
+                    handlerRemoveUser= { handlerRemoveUser }
+                    handlerUserSelectedForm = { handlerUserSelectedForm }
+                    users = { users }
+                  />
             }
 
           </div>
