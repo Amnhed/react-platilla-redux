@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const UserRow = ( { handlerUserSelectedForm, handlerRemoveUser, id, username, email, password } ) => {
+export const UserRow = ( { handlerUserSelectedForm, handlerRemoveUser, id, username, email } ) => {
 
   return (
       <tr>
@@ -15,8 +15,7 @@ export const UserRow = ( { handlerUserSelectedForm, handlerRemoveUser, id, usern
             onClick={ () => handlerUserSelectedForm({
               id,
               username,
-              email,
-              password
+              email
             }) }
           >
             Actualizar

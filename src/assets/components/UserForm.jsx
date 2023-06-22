@@ -5,7 +5,7 @@ export const UserForm = ( { userSelected, handlerAddUser, initialUserForm } ) =>
 
     const [userForm, setUserForm] = useState(initialUserForm);
 
-    const { username, password, email } = userForm;
+    const { username, password, email, id } = userForm;
 
     const onInputChange = ({ target }) => {
         //console.log('target '+target.value)
@@ -19,7 +19,8 @@ export const UserForm = ( { userSelected, handlerAddUser, initialUserForm } ) =>
       event.preventDefault();
       //console.log( userForm );
       //guardar el usario en el lisatdo de usuarios
-      if( !username || !email || !password){
+      //el id seha igual a 0 y no venga paswword a validar (!password && id === 0)
+      if( !username || !email || (!password && id === 0)){
         alert('Debes completar los campos del formulario');
         return
       }
@@ -32,6 +33,7 @@ export const UserForm = ( { userSelected, handlerAddUser, initialUserForm } ) =>
       //console.log(userSelected);
       setUserForm({
         ...userSelected,
+        password: ''
       })
     }, [userSelected]);
 
@@ -66,21 +68,32 @@ export const UserForm = ( { userSelected, handlerAddUser, initialUserForm } ) =>
           </div>
 
         </div>
+        { id > 0 || 
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              name="password"
+              value={password}
+              onChange={ onInputChange }
+            />
+          </div>
+        }
+
         <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
           <input
-            type="password"
+            type="hidden"
             className="form-control"
-            name="password"
-            value={password}
-            onChange={ onInputChange }
+            name="id"
+            value={id}
           />
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Submit
+          { id>0 ? 'Editar': 'Crear' }
         </button>
       </form>
    

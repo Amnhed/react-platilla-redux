@@ -32,8 +32,14 @@ export const MainApp = () => {
   const [ userSelected, setUserSelected ] = useState(initialUserForm);
   
   const handlerAddUser = (user) => {
+    let type;
+    if(user.id === 0){
+      type = 'addUser';
+    }else{
+      type = 'updateUser'
+    }
     dispatch({
-      type:'addUser',
+      type,
       payload: user,
     });
   }
