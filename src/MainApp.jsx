@@ -26,6 +26,7 @@ export const MainApp = () => {
           </div>
 
           <div className="col">
+          <button type="button" className="btn btn-dark mb-3">Nuevo usuario</button>
             {
               users.length === 0 
                 ? <div className="alert alert-warning">No existen usarios en el sistema</div>
