@@ -1,7 +1,8 @@
-import { UsersPage } from "./pages/UsersPage";
+import { LoginPage } from "./auth/pages/LoginPage";
 
 export const MainApp = () => {
   return (
-    <UsersPage />
+    // <LoginPage />
+    <></>
   )
 }
