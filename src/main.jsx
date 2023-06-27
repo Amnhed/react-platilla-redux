@@ -7,6 +7,6 @@ import { LoginPage } from './auth/pages/LoginPage'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <LoginPage />
+    <MainApp />
   </React.StrictMode>,
 )

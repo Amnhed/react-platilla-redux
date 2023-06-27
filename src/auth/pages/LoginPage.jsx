@@ -6,46 +6,45 @@ const initialLoginForm = {
     password:''
 }
 
-export const LoginPage = () => {
+export const LoginPage = ({handlerLogin}) => {
     const [loginForm, setLoginForm] = useState(initialLoginForm);
     const { username, password} = loginForm;
 
-    const onInputCahnge = ({ target }) => {
-        const {name, value} = target;
+    const onInputChange = ({ target }) => {
+        const { name, value } = target;
         setLoginForm({
             ...loginForm,
-            [ name ]:value
-        });
+            [ name ]: value,
+        })
     }
+
     const onSubmit = (event) => {
         event.preventDefault();
-        if(!username || !password){
+        if (!username || !password) {
             Swal.fire('Error de validacion', 'Username y password requeridos', 'error');
         }
-        //login
-        if(username === 'amnhed' && password === '12345'){
-            // handlerLogin();
-        }else{
-            Swal.fire('Error de inico de session ', 'Usuario o password invalidos', 'error');
-        }
+
+        // aca implementamos el login
+        handlerLogin({username, password});
+        
         setLoginForm(initialLoginForm);
     }
 
     return (
-        <div class="modal" style={{ display:'block' }} tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Iniciar sesion</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div className="modal" style={{ display:'block' }} tabIndex="-1">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">Iniciar sesion</h5>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form onSubmit={ onSubmit }>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <input 
                                 className="form-control my-3 w-75" 
                                 placeholder="Usuario" 
                                 name="username"
-                                onChange={ onInputCahnge }
+                                onChange={ onInputChange }
                             />
 
                             <input 
@@ -53,14 +52,13 @@ export const LoginPage = () => {
                                 placeholder="Contraseña" 
                                 type='password' 
                                 name="password"
-                                onChange={ onInputCahnge }
+                                onChange={ onInputChange }
                                 />
                         </div>
-                    </form>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                    <div className="modal-footer">
+                        <button type="submit" className="btn btn-primary">Iniciar session</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>)
