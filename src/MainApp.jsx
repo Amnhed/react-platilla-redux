@@ -2,7 +2,7 @@ import { useReducer } from 'react';
 import Swal from 'sweetalert2';
 import { LoginPage } from './auth/pages/LoginPage';
 import { loginReducer } from './auth/reducers/loginReducer';
-// import { Navbar } from './components/layout/Navbar';
+import { Navbar } from './components/layout/NavBar';
 import { UsersPage } from './pages/UsersPage';
 
 const initialLogin = JSON.parse(sessionStorage.getItem('login')) || {
@@ -43,7 +43,7 @@ export const MainApp = () => {
                 login.isAuth
                     ? (
                         <>
-                            {/* <Navbar login={ login } handlerLogout={handlerLogout} /> */}
+                            <Navbar login={ login } handlerLogout={handlerLogout} />
                             <UsersPage />
                         </>
                     )

@@ -28,7 +28,6 @@ export const UsersPage = () => {
       )}
 
       <div className="container my-4">
-        <h2>MainApp</h2>
         <div className="row">
           <div className="col">
             {/* Sies falso que lo muestre  */}
