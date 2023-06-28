@@ -14,7 +14,7 @@ export const Navbar = ({login, handlerLogout}) => {
                             <a className="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Features</a>
+                            {/* <a className="nav-link" href="#">Features</a> */}
                         </li>
                         <li className="nav-item">
 
@@ -25,11 +25,9 @@ export const Navbar = ({login, handlerLogout}) => {
                             </a>
                             <ul className="dropdown-menu">
                                 <li>
-                                    <button class="btn btn-light w-100 rounded" onClick={handlerLogout}>Cerrar sesion</button>
+                                    <button className="btn btn-light w-100 rounded" onClick={handlerLogout}>Cerrar sesion</button>
 
                                 </li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
                     </ul>

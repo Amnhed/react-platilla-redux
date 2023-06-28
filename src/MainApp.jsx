@@ -4,39 +4,12 @@ import { LoginPage } from './auth/pages/LoginPage';
 import { loginReducer } from './auth/reducers/loginReducer';
 import { Navbar } from './components/layout/NavBar';
 import { UsersPage } from './pages/UsersPage';
+import { useAuth } from './auth/hooks/useAuth';
 
-const initialLogin = JSON.parse(sessionStorage.getItem('login')) || {
-    isAuth: false,
-    user: undefined,
-}
+
+
 export const MainApp = () => {
-
-    const [login, dispach] = useReducer(loginReducer, initialLogin);
-
-    const handlerLogin = ({ username, password }) => {
-        if (username === 'admin' && password === '12345') {
-            const user = { username: 'admin' }
-            console.log(user);
-            dispach({
-                type: 'login',
-                payload: user,
-            });
-            sessionStorage.setItem('login', JSON.stringify({
-                isAuth: true,
-                user,
-            }));
-
-        } else {
-            Swal.fire('Error Login', 'Username o password invalidos', 'error');
-        }
-    }
-
-    const handlerLogout = () => {
-        dispach({
-            type: 'logout',
-        });
-        sessionStorage.removeItem('login');
-    }
+    const {login, handlerLogin, handlerLogout} = useAuth();
     return (
         <>
             {
