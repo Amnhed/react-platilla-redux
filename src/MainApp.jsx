@@ -21,10 +21,10 @@ export const MainApp = () => {
                 type: 'login',
                 payload: user,
             });
-            // sessionStorage.setItem('login', JSON.stringify({
-            //     isAuth: true,
-            //     user,
-            // }));
+            sessionStorage.setItem('login', JSON.stringify({
+                isAuth: true,
+                user,
+            }));
 
         } else {
             Swal.fire('Error Login', 'Username o password invalidos', 'error');

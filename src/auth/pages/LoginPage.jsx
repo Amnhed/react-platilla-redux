@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Swal from "sweetalert2";
 
-const initialLoginForm = {
+const initialLoginForm = JSON.parse(sessionStorage.getItem('login')) || {
     username:'',
     password:''
 }
@@ -15,7 +15,7 @@ export const LoginPage = ({handlerLogin}) => {
         setLoginForm({
             ...loginForm,
             [ name ]: value,
-        })
+        });
     }
 
     const onSubmit = (event) => {
