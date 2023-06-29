@@ -12,7 +12,8 @@ export const UsersList = ({ handlerUserSelectedForm, handlerRemoveUser, users = 
                 <th scope="col">#</th>
                 <th scope="col">Usuario</th>
                 <th scope="col">Email</th>
-                <th scope="col">Update</th>
+                <th scope="col">Editar modal</th>
+                <th scope="col">Editar Pagina</th>
                 <th scope="col">Remove</th>
             </tr>
         </thead>

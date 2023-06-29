@@ -41,6 +41,7 @@ export const MainRoutes = ({login, handlerLogout}) => {
             />} />
             {/* Ruta editar usuario */}
             <Route path="users/edit/:id" element={<RegisterUserPage
+                users={users}
                 handlerAddUser={handlerAddUser}
                 initialUserForm={initialUserForm}
             />} />

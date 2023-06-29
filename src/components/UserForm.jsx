@@ -71,9 +71,6 @@ export const UserForm = ( { handlerCloseForm, userSelected, handlerAddUser, init
             value={email}
             onChange={ onInputChange }
           />
-          <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
-          </div>
 
         </div>
         { id > 0 || 
