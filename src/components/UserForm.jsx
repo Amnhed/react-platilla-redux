@@ -29,6 +29,14 @@ export const UserForm = ( { handlerCloseForm, userSelected, handlerAddUser, init
         })
         return
       }
+      if(!email.includes('@')){
+        Swal.fire({
+          icon: 'error',
+          title: 'Error de validacion',
+          text: 'No es un email valido'
+        })
+        return
+      }
       handlerAddUser(userForm)
       setUserForm(initialUserForm);
     }
