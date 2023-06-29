@@ -18,7 +18,7 @@ export const MainRoutes = ({login, handlerLogout}) => {
     handlerOpenForm,
     handlerCloseForm,
   } = useUsers();
-  
+
   return (
     <>
         <Navbar login={login} handlerLogout={handlerLogout} />
@@ -34,9 +34,15 @@ export const MainRoutes = ({login, handlerLogout}) => {
                 handlerOpenForm={handlerOpenForm}
                 handlerCloseForm={handlerCloseForm}
               />} />
+              {/* Ruta registrar usuario */}
             <Route path="users/register" element={<RegisterUserPage
                handlerAddUser={handlerAddUser}
                initialUserForm={initialUserForm}
+            />} />
+            {/* Ruta editar usuario */}
+            <Route path="users/edit/:id" element={<RegisterUserPage
+                handlerAddUser={handlerAddUser}
+                initialUserForm={initialUserForm}
             />} />
             <Route path="/" element={<Navigate to="/users" />} />
         </Routes>
