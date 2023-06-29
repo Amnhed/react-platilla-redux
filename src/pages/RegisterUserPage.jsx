@@ -11,8 +11,11 @@ export const RegisterUserPage = ({users=[], initialUserForm, handlerAddUser}) =>
     //cuando cambia el id de la url gatilla el useEffect
     useEffect(() => {
         // console.log(id);
-        const user = users.find(user => user.id == id) || initialUserForm;
-        setUserSelected(user);
+        if(id){
+            const user = users.find(user => user.id == id) || initialUserForm;
+            setUserSelected(user);
+        }
+
     }, [id]);
     return (
     <div className="container my-4">
