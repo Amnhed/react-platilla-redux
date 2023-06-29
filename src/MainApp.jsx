@@ -6,7 +6,7 @@ import { Navbar } from './components/layout/NavBar';
 import { UsersPage } from './pages/UsersPage';
 import { useAuth } from './auth/hooks/useAuth';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { UserRoutes } from './routes/userRoutes';
+import { MainRoutes } from './routes/MainRoutes';
 
 
 
@@ -20,7 +20,7 @@ export const MainApp = () => {
                         <>
                             <Route path='/*' 
                                 element={
-                                    <UserRoutes 
+                                    <MainRoutes 
                                         login={login}
                                         handlerLogout={handlerLogout}
                                     />
