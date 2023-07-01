@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { UserForm } from '../components/UserForm';
 import { useParams } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
-export const RegisterUserPage = ({users=[], initialUserForm, handlerAddUser}) => {
+export const RegisterUserPage = () => {
+    const {users=[], initialUserForm, handlerAddUser} = useContext(UserContext);
     const [userSelected, setUserSelected] = useState(initialUserForm);
     // debo declarar la variable con el mismo nombre en la ruta
 
