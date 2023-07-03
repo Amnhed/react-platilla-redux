@@ -1,30 +1,23 @@
+import { useContext } from "react";
 import { UserModalForm } from "../components/UserModalForm";
 import { UsersList } from "../components/UsersList";
-import { useUsers } from "../hooks/useUsers";
+import { UserContext } from "../context/UserContext";
 
-export const UsersPage = ({
-  users,
-  userSelected,
-  initialUserForm,
-  visibleForm,
+export const UsersPage = () => {
 
-  handlerAddUser,
-  handlerRemoveUser,
-  handlerUserSelectedForm,
-  handlerOpenForm,
-  handlerCloseForm,
-}) => {
+  const {
+    users,
+    visibleForm,
+    handlerRemoveUser,
+    handlerUserSelectedForm,
+    handlerOpenForm
+  } = useContext(UserContext);
 
 
   return (
     <>
       {!visibleForm || (
-        <UserModalForm 
-        userSelected={ userSelected }
-        initialUserForm={ initialUserForm }
-        handlerAddUser={ handlerAddUser }
-        handlerCloseForm={ handlerCloseForm}
-       />
+        <UserModalForm />
       )}
 
       <div className="container my-4">

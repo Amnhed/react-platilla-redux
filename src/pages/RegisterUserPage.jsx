@@ -25,8 +25,6 @@ export const RegisterUserPage = () => {
         <div className="col">
             <UserForm
                 userSelected={userSelected}
-                initialUserForm={initialUserForm}
-                handlerAddUser={handlerAddUser}
             />
         </div>
     </div>
