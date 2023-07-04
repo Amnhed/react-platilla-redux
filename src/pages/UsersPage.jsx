@@ -38,11 +38,7 @@ export const UsersPage = () => {
                 No existen usarios en el sistema
               </div>
             ) : (
-              <UsersList
-                handlerRemoveUser={handlerRemoveUser}
-                handlerUserSelectedForm={handlerUserSelectedForm}
-                users={users}
-              />
+              <UsersList />
             )}
           </div>
         </div>

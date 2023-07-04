@@ -92,7 +92,6 @@ export const useUsers = () => {
     userSelected,
     initialUserForm,
     visibleForm,
-
     handlerAddUser,
     handlerRemoveUser,
     handlerUserSelectedForm,
