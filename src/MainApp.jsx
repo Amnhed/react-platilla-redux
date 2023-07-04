@@ -17,10 +17,7 @@ export const MainApp = () => {
                         <>
                             <Route path='/*' 
                                 element={
-                                    <MainRoutes 
-                                        login={login}
-                                        handlerLogout={handlerLogout}
-                                    />
+                                    <MainRoutes />
                                     }
                             />
                         </>
@@ -29,7 +26,7 @@ export const MainApp = () => {
                     <>
                         <Route path='/login'
                             element={
-                                <LoginPage handlerLogin={handlerLogin} />
+                                <LoginPage />
                             }
                         />
                         <Route path='/*' element={ <Navigate to="/login"/>}/>
