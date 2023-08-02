@@ -19,15 +19,15 @@ export const useUsers = () => {
     const [ visibleForm, setVisibleForm ] = useState(false);
     const navigate = useNavigate()
 
-    const getAllUsersHook = async() =>{
+    const getAllUsersHook = async () => {
       const result = await findAll();
       console.log(result);
       dispatch({
-        type:'loadingUsers',
-        payload:result.data
-      })
-
-    }
+          type: 'loadingUsers',
+          payload: result.data,
+      });
+      
+  }
  
     const handlerAddUser = (user) => { 
         dispatch({
