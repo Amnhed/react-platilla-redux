@@ -39,10 +39,7 @@ export const updateUser = async({ id, username, email }) => {
 
 export const removeUser = async(id) => {
     try {
-        return await axios.delete(`${BASE_URL}/delete/${id}`,{
-            username,
-            email,
-        })
+        return await axios.delete(`${BASE_URL}/delete/${id}`)
         
     } catch (error) {
         console.log(error);

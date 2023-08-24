@@ -31,8 +31,10 @@ export const useUsers = () => {
  
     const handlerAddUser = async(user) => { 
       console.log(user);
+      //Agregar usario o editar bd service
       let response;
       if ((user.id === 0)){
+        // Await obtener la respuesta y convertirla a JSON y actualizar edo react
         response = await saveUser(user);   
       }else {
         response = await updateUser(user);
@@ -62,6 +64,7 @@ export const useUsers = () => {
             confirmButtonText: 'Eliminar usuario!'
           }).then((result) => {
             if (result.isConfirmed) {
+                //quitar usario de base
                 removeUser(id);
                 dispatch({
                     type:'removeUser',
