@@ -14,7 +14,7 @@ export const findAll = async() => {
 
 export const saveUser = async({username, email, password}) => {
     try {
-        return axios.post(BASE_URL, {
+        return await axios.post(BASE_URL, {
             username,
             email,
             password,
@@ -37,7 +37,7 @@ export const updateUser = async({ id, username, email }) => {
     return undefined;
 }
 
-export const removeUser = async({ id }) => {
+export const removeUser = async(id) => {
     try {
         return await axios.delete(`${BASE_URL}/delete/${id}`,{
             username,
