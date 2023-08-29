@@ -20,9 +20,10 @@ export const saveUser = async({username, email, password}) => {
             password,
         });
     } catch (error) {
-        console.error(error);
+        //console.error(error);
+        throw error;
     }
-    return undefined;
+    
 }
 
 export const updateUser = async({ id, username, email }) => {
@@ -32,15 +33,15 @@ export const updateUser = async({ id, username, email }) => {
             email,
         })
     } catch (error) {
-        console.log(error);
+        //console.log(error);
+        throw error;
     }
-    return undefined;
+    
 }
 
 export const removeUser = async(id) => {
     try {
         return await axios.delete(`${BASE_URL}/delete/${id}`)
-        
     } catch (error) {
         console.log(error);
     }
