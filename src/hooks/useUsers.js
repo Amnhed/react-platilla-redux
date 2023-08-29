@@ -13,10 +13,17 @@ const defaultUsers = [];
     email:''
   }
 
+  const initialErrors = {
+    username: '',
+    password:'',
+    email:''
+  }
+
 export const useUsers = () => {
     const [ users, dispatch ] = useReducer(usersReducer, defaultUsers);
     const [ userSelected, setUserSelected ] = useState(initialUserForm);
     const [ visibleForm, setVisibleForm ] = useState(false);
+    const [ errors, setErrors ]  = useState(initialErrors)
     const navigate = useNavigate()
 
     const getAllUsersHook = async () => {
@@ -32,25 +39,35 @@ export const useUsers = () => {
     const handlerAddUser = async(user) => { 
       console.log(user);
       //Agregar usario o editar bd service
-      let response;
-      if ((user.id === 0)){
-        // Await obtener la respuesta y convertirla a JSON y actualizar edo react
-        response = await saveUser(user);   
-      }else {
-        response = await updateUser(user);
-      }
-        dispatch({
-          type : (user.id === 0) ? 'addUser':'updateUser',
-          payload: response.data,
-        });
+      let response;  
+      try {
+          if ((user.id === 0)){
+            // Await obtener la respuesta y convertirla a JSON y actualizar edo react
+            response = await saveUser(user);   
+          }else {
+            response = await updateUser(user);
+          }
+          dispatch({
+            type : (user.id === 0) ? 'addUser':'updateUser',
+            payload: response.data,
+          });
 
-        Swal.fire(
-            (user.id === 0 ? 'Usuario creado' : 'Usuario actualizado'),
-            (user.id === 0 ? '¡El usuario ha sido creado!' : '¡El usuario ha sido actualizado!'),
-            'success'
-        )
-        handlerCloseForm()
-        navigate('/users')
+          Swal.fire(
+              (user.id === 0 ? 'Usuario creado' : 'Usuario actualizado'),
+              (user.id === 0 ? '¡El usuario ha sido creado!' : '¡El usuario ha sido actualizado!'),
+              'success'
+          )
+          handlerCloseForm();
+          navigate('/users');
+        } catch (error) {
+          if(error.response && error.response.status == 400){
+            //console.error(error.response.data)
+            setErrors(error.response.data)
+          }else{
+            throw error;
+          }
+
+        }
       }
     
       const handlerRemoveUser = (id) => {
@@ -101,6 +118,7 @@ export const useUsers = () => {
     userSelected,
     initialUserForm,
     visibleForm,
+    errors,
     handlerAddUser,
     handlerRemoveUser,
     handlerUserSelectedForm,
