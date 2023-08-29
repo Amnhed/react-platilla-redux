@@ -5,7 +5,7 @@ import { UserContext } from "../context/UserContext";
 
 export const UserForm = ( { handlerCloseForm, userSelected } ) => {
 
-    const { initialUserForm, handlerAddUser } = useContext(UserContext);
+    const { initialUserForm, handlerAddUser, errorsValidationUser } = useContext(UserContext);
     const [userForm, setUserForm] = useState(initialUserForm);
 
     const { username, password, email, id } = userForm;
@@ -40,7 +40,8 @@ export const UserForm = ( { handlerCloseForm, userSelected } ) => {
         return
       }
       handlerAddUser(userForm)
-      setUserForm(initialUserForm);
+      //limpio formulario
+      //setUserForm(initialUserForm);
     }
     const onCloseForm = () => {
       handlerCloseForm();
@@ -67,7 +68,7 @@ export const UserForm = ( { handlerCloseForm, userSelected } ) => {
             name="username"
             value={username}
             onChange={onInputChange} />
-          
+          <p className="text-danger">{ errorsValidationUser?.username }</p>
         </div>
 
         <div className="mb-3">
@@ -81,7 +82,7 @@ export const UserForm = ( { handlerCloseForm, userSelected } ) => {
             value={email}
             onChange={ onInputChange }
           />
-
+          <p className="text-danger">{ errorsValidationUser?.email }</p>
         </div>
         { id > 0 || 
           <div className="mb-3">
@@ -95,6 +96,8 @@ export const UserForm = ( { handlerCloseForm, userSelected } ) => {
               value={password}
               onChange={ onInputChange }
             />
+            <p className="text-danger">{ errorsValidationUser?.password }</p>
+
           </div>
         }
 
