@@ -23,7 +23,7 @@ export const useUsers = () => {
     const [ users, dispatch ] = useReducer(usersReducer, defaultUsers);
     const [ userSelected, setUserSelected ] = useState(initialUserForm);
     const [ visibleForm, setVisibleForm ] = useState(false);
-    const [ errors, setErrors ]  = useState(initialErrors)
+    const [ errorsValidationUser, setErrorsValidationUser ]  = useState(initialErrors)
     const navigate = useNavigate()
 
     const getAllUsersHook = async () => {
@@ -61,8 +61,8 @@ export const useUsers = () => {
           navigate('/users');
         } catch (error) {
           if(error.response && error.response.status == 400){
-            //console.error(error.response.data)
-            setErrors(error.response.data)
+            console.error(error.response.data)
+            setErrorsValidationUser(error.response.data)
           }else{
             throw error;
           }
@@ -118,7 +118,7 @@ export const useUsers = () => {
     userSelected,
     initialUserForm,
     visibleForm,
-    errors,
+    errorsValidationUser,
     handlerAddUser,
     handlerRemoveUser,
     handlerUserSelectedForm,

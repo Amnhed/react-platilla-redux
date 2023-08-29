@@ -7,7 +7,7 @@ export const UserProvider = ({ children }) => {
         userSelected,
         initialUserForm,
         visibleForm,
-
+        errorsValidationUser,
         handlerAddUser,
         handlerRemoveUser,
         handlerUserSelectedForm,
@@ -22,7 +22,8 @@ export const UserProvider = ({ children }) => {
                 users,
                 userSelected,
                 initialUserForm,
-                visibleForm,  
+                visibleForm,
+                errorsValidationUser,  
                 handlerAddUser,
                 handlerRemoveUser,
                 handlerUserSelectedForm,
