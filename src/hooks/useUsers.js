@@ -60,9 +60,18 @@ export const useUsers = () => {
           handlerCloseForm();
           navigate('/users');
         } catch (error) {
+          console.error(error)
           if(error.response && error.response.status == 400){
-            console.error(error.response.data)
             setErrorsValidationUser(error.response.data)
+          }else if(error.response && error.response.status == 500 && 
+            error.response.data?.message?.includes('constraint')){
+              if(error.response.data?.message?.includes('UK_username')){
+                setErrorsValidationUser({username: 'El nombre de usario ya existe!'});
+              }
+              if(error.response.data?.message?.includes('UK_email')){
+                setErrorsValidationUser({email: 'El email ya existe!'});
+              }
+
           }else{
             throw error;
           }
